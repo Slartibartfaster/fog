@@ -69,7 +69,8 @@ module Fog
                    end
             if type && self.send("#{type}s".to_sym).send(:get, resource_id)
               { 'resourceId' => resource_id, 'resourceType' => type }
-            elsif type=='security_group' && self.security_groups.all({'group-id' => resource_id}) != []
+            elsif 
+              type=='security_group' && self.security_groups.all({'group-id' => resource_id}) != []
             else
               raise(Fog::Service::NotFound.new("The #{type} ID '#{resource_id}' does not exist"))
             end
